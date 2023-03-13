@@ -600,8 +600,8 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
             axios.get('https://raw.githubusercontent.com/tanjirokamado0806/fb-tanjiro/main/package.json').then(async (res) => {
                 const localbrand = JSON.parse(readFileSync('./node_modules/fb-tanjiro/package.json')).version;
                 if (localbrand != res.data.version) {
-                    log.warn("UPDATE > ", `${global.fb.languages.newVersion}${JSON.parse(readFileSync('./node_modules/fb-tanjiro/package.json')).version} => ${res.data.version}`);
-                    log.warn("UPDATE > ", `${global.fb.languages.autoUpdate}`);
+                    log.warn(global.getText("newVer"), JSON.parse(readFileSync('./node_modules/fb-tanjiro/package.json')).version, res.data.version);
+                    log.warn(global.getText("autoUp"));
                     try {
                         execSync('npm install fb-tanjiro@latest', { stdio: 'inherit' });
                         logger.load(global.getText("update"), '[ FB-TANJIRO ]')
