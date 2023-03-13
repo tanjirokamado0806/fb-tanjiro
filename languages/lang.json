@@ -1,0 +1,27 @@
+{
+  "en": {
+    "successLogin": "Login Successful - Bot ID: %0",
+    "ping": "Your Project Is Now Connected To Tanjiro's Website Pinger!",
+    "errPing": "Your Project Cannot Operate With Tanjiro's Website Pinger!",
+    "region": "Your Project's Region Is: %0",
+    "endpoint": "Polling endpoint: %0",
+    "login": "Starting To Login!!",
+    "errLogin": "Login Failed! You're Using 2 Security!",
+    "web": "Confirm From Browser, Proceed to Login Process...",
+    "errEnv": "Failed To Create An Env File!",
+    "env": "Successfully Created An Env File!",
+    "errPass": "An error occurred while trying to generate a Random Password",
+    "errAppstate": "Appstate Is Still Not Ready To Decode!",
+    "appstate": "Appstate Is Successfully Decoded!",
+    "wrongAppstate": "Wrong Appstate, Please Replace It With A New One!",
+    "loginDone": "Login Successfully!",
+    "newVer": "New Version Available: ",
+    "errUID": "Error When Retrieving UID!!",
+    "autoUp": "Proceeding TO Update Automatically!",
+    "update": "Updated Successfully!!",
+    "restart": "Restarting...",
+    "encAppstate": "Appstate Encrypted Successfully!",
+    "errUp": "Error When Updating: %0",
+    "check": "You Are Currently Using Version: %0!"
+  }
+}
