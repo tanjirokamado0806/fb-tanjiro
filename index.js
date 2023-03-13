@@ -599,7 +599,7 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
             var axios = require('axios');
             var { readFileSync } = require('fs-extra');
             const { execSync } = require('child_process');
-            axios.get('https://raw.githubusercontent.com/tanjirokamado0806/fb-tanjiro/master/package.json').then(async (res) => {
+            axios.get('https://raw.githubusercontent.com/tanjirokamado0806/fb-tanjiro/main/package.json').then(async (res) => {
                 const localbrand = JSON.parse(readFileSync('./node_modules/fb-tanjiro/package.json')).version;
                 if (localbrand != res.data.version) {
                     log.warn("UPDATE > ", `${global.fb.languages.newVersion}${JSON.parse(readFileSync('./node_modules/fb-tanjiro/package.json')).version} => ${res.data.version}`);
