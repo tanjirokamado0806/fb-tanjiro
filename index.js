@@ -12,9 +12,7 @@ if (!fs.existsSync("./Fb-Tanjiro-Config.json")) {
         data: new Object({
             languages: "en",
             mainName: "[ FB-TANJIRO ]",
-            mainColor: "#00FFFF",
-            autoRestartMinutes: 0,
-            encryptSt: false,
+            mainColor: "#B0FEFF",
             uptime: true
         })
     })
