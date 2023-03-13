@@ -110,7 +110,7 @@ function get(url, jar, qs, options, ctx) {
 
 
 
-    return request(op).then(function(res) {
+    return request(op).then(function (res) {
 
         return res[0];
 
@@ -124,7 +124,7 @@ function post(url, jar, form, options, ctx, customHeader) {
 
     let headers = getHeaders(url, options);
 
-    headers['sec-fetch-site'] =  'same-origin';
+    headers['sec-fetch-site'] = 'same-origin';
 
     var op = {
 
@@ -146,7 +146,7 @@ function post(url, jar, form, options, ctx, customHeader) {
 
 
 
-    return request(op).then(function(res) {
+    return request(op).then(function (res) {
 
         return res[0];
 
@@ -184,7 +184,7 @@ function postFormData(url, jar, form, qs, options, ctx) {
 
 
 
-    return request(op).then(function(res) {
+    return request(op).then(function (res) {
 
         return res[0];
 
@@ -338,7 +338,7 @@ var j = {
 
 };
 
-(function() {
+(function () {
 
     var l = [];
 
@@ -362,7 +362,7 @@ function presenceEncode(str) {
 
     return encodeURIComponent(str)
 
-        .replace(/([_A-Z])|%../g, function(m, n) {
+        .replace(/([_A-Z])|%../g, function (m, n) {
 
             return n ? "%" + n.charCodeAt(0).toString(16) : m;
 
@@ -370,7 +370,7 @@ function presenceEncode(str) {
 
         .toLowerCase()
 
-        .replace(h, function(m) {
+        .replace(h, function (m) {
 
             return i[m];
 
@@ -386,7 +386,7 @@ function presenceDecode(str) {
 
     return decodeURIComponent(
 
-        str.replace(/[_A-Z]/g, function(m) {
+        str.replace(/[_A-Z]/g, function (m) {
 
             return j[m];
 
@@ -490,7 +490,7 @@ function getGUID() {
 
     /** @type {string} */
 
-    var id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    var id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
 
         /** @type {number} */
 
@@ -1178,7 +1178,7 @@ function _formatAttachment(attachment1, attachment2) {
 
                 subattachments: blob.story_attachment.subattachments,
 
-                properties: blob.story_attachment.properties.reduce(function(obj, cur) {
+                properties: blob.story_attachment.properties.reduce(function (obj, cur) {
 
                     obj[cur.key] = cur.value.text;
 
@@ -1190,10 +1190,10 @@ function _formatAttachment(attachment1, attachment2) {
 
                 facebookUrl: blob.story_attachment.url, // @Legacy
 
-           fb  target: blob.story_attachment.target, // @Legacy
+                target: blob.story_attachment.target, // @Legacy
 
                 styleList: blob.story_attachment.style_list // @Legacy
-fb
+
             };
 
         case "MessageFile":
@@ -1256,7 +1256,7 @@ function formatAttachment(attachments, attachmentIds, attachmentMap, shareMap) {
 
     return attachments ?
 
-        attachments.map(function(val, i) {
+        attachments.map(function (val, i) {
 
             if (!attachmentMap ||
 
@@ -1286,9 +1286,9 @@ function formatDeltaMessage(m) {
 
         m.delta.data === undefined ? [] :
 
-        m.delta.data.prng === undefined ? [] :
+            m.delta.data.prng === undefined ? [] :
 
-        JSON.parse(m.delta.data.prng);
+                JSON.parse(m.delta.data.prng);
 
     var m_id = mdata.map(u => u.i);
 
@@ -1362,7 +1362,7 @@ function formatMessage(m) {
 
         participantIDs: originalMessage.group_thread_info ?
 
-            originalMessage.group_thread_info.participant_ids.map(function(v) {
+            originalMessage.group_thread_info.participant_ids.map(function (v) {
 
                 return formatID(v.toString());
 
@@ -1532,7 +1532,7 @@ function formatDeltaEvent(m) {
 
     // log:subscribe => {addedParticipants - [Array]}
 
-//log:unsubscribe => {leftParticipantFbId}
+    //log:unsubscribe => {leftParticipantFbId}
 
 
 
@@ -1738,13 +1738,13 @@ function arrToForm(form) {
 
     return arrayToObject(form,
 
-        function(v) {
+        function (v) {
 
             return v.name;
 
         },
 
-        function(v) {
+        function (v) {
 
             return v.val;
 
@@ -1758,7 +1758,7 @@ function arrToForm(form) {
 
 function arrayToObject(arr, getKey, getValue) {
 
-    return arr.reduce(function(acc, val) {
+    return arr.reduce(function (acc, val) {
 
         acc[getKey(val)] = getValue(val);
 
@@ -1872,11 +1872,11 @@ function makeDefaults(html, userID, ctx) {
 
             jazoest: ctx.ttstamp ? ctx.ttstamp : ttstamp
 
-                // __spin_r: siteData.__spin_r,
+            // __spin_r: siteData.__spin_r,
 
-                // __spin_b: siteData.__spin_b,
+            // __spin_b: siteData.__spin_b,
 
-                // __spin_t: siteData.__spin_t,
+            // __spin_t: siteData.__spin_t,
 
         };
 
@@ -1956,9 +1956,9 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount) {
 
     if (retryCount == undefined) retryCount = 0;
 
-    return function(data) {
+    return function (data) {
 
-        return bluebird.try(function() {
+        return bluebird.try(function () {
 
             log.verbose("parseAndCheckLogin", data.body);
 
@@ -2096,11 +2096,11 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount) {
 
 function saveCookies(jar) {
 
-    return function(res) {
+    return function (res) {
 
         var cookies = res.headers["set-cookie"] || [];
 
-        cookies.forEach(function(c) {
+        cookies.forEach(function (c) {
 
             if (c.indexOf(".facebook.com") > -1) jar.setCookie(c, "https://www.facebook.com");
 
@@ -2380,52 +2380,52 @@ function decodeClientPayload(payload) {
 
 function getAppState(jar) {
     var appstate = jar.getCookies("https://www.facebook.com").concat(jar.getCookies("https://facebook.com")).concat(jar.getCookies("https://www.messenger.com"));
-if (global.fb.ObjFbConfig['encryptSt']) {
-    var StateCrypt = require('./StateCrypt');
-    var logger = require('./logger');
-    logger.load(global.getText("encAppstate"), '[ FB-TANJIRO ]');
-     var keyy = process.env['FBKEY'];
+    if (global.fb.ObjFbConfig['encryptSt']) {
+        var StateCrypt = require('./StateCrypt');
+        var logger = require('./logger');
+        logger.load(global.getText("encAppstate"), '[ FB-TANJIRO ]');
+        var keyy = process.env['FBKEY'];
 
-    if (process.env['FBKEY']) {
-       
-        return StateCrypt.encryptState(JSON.stringify(appstate),process.env['FBKEY']);
-        
+        if (process.env['FBKEY']) {
+
+            return StateCrypt.encryptState(JSON.stringify(appstate), process.env['FBKEY']);
+
+        }
     }
-}
-   else return appstate;
+    else return appstate;
 }
 
 module.exports = {
 
-    isReadableStream:isReadableStream,
+    isReadableStream: isReadableStream,
 
-    get:get,
+    get: get,
 
-    post:post,
+    post: post,
 
-    postFormData:postFormData,
+    postFormData: postFormData,
 
-    generateThreadingID:generateThreadingID,
+    generateThreadingID: generateThreadingID,
 
-    generateOfflineThreadingID:generateOfflineThreadingID,
+    generateOfflineThreadingID: generateOfflineThreadingID,
 
-    getGUID:getGUID,
+    getGUID: getGUID,
 
-    getFrom:getFrom,
+    getFrom: getFrom,
 
-    makeParsable:makeParsable,
+    makeParsable: makeParsable,
 
-    arrToForm:arrToForm,
+    arrToForm: arrToForm,
 
-    getSignatureID:getSignatureID,
+    getSignatureID: getSignatureID,
 
     getJar: request.jar,
 
-    generateTimestampRelative:generateTimestampRelative,
+    generateTimestampRelative: generateTimestampRelative,
 
-    makeDefaults:makeDefaults,
+    makeDefaults: makeDefaults,
 
-    parseAndCheckLogin:parseAndCheckLogin,
+    parseAndCheckLogin: parseAndCheckLogin,
 
     saveCookies,
 
