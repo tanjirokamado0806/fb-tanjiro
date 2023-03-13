@@ -124,7 +124,7 @@ function buildAPI(globalOptions, html, jar) {
     if (html.indexOf("/checkpoint/block/?next") > -1) log.warn("login", global.fb.languages.checkpoint);
 
     var userID = maybeCookie[0].cookieString().split("=")[1].toString();
-    logger.load(global.getText("successLogin"), '[ FB-TANJIRO ]');
+    logger.load(global.getText("successLogin", userID), '[ FB-TANJIRO ]');
 
     try {
         clearInterval(checkVerified);
@@ -610,11 +610,11 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
                         console.clear(); process.exit(1);
                     }
                     catch (err) {
-                        log.warn(global.fb.languages.errorUpdate + err);
+                        log.warn(global.getText("errUp", err));
                     }
                 }
                 else {
-                    logger.load(global.getText("check"), '[ FB-TANJIRO ]');
+                    logger.load(global.getText("check", localbrand), '[ FB-TANJIRO ]');
                     await new Promise(resolve => setTimeout(resolve, 3 * 1000));
                     callback(null, api);
                 }
