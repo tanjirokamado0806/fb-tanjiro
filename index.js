@@ -16,7 +16,7 @@ if (!fs.existsSync("./Fb-Tanjiro-Config.json")) {
             uptime: true
         })
     })
-    fs.writeFileSync("./Fb-Tanjiro-Config.json", JSON.stringify(global.fb.data, null, "\t"))
+    fs.writeFileSync("./Fb-Tanjiro-Config.json", JSON.stringify(global.fb.data, null, 2))
     return process.exit(1)
 }
 var lang = require("../../Fb-Tanjiro-Config.json").languages;
@@ -40,6 +40,10 @@ if (global.fb.ObjFbConfig['uptime']) {
     try {
         axios.get(`https://Tanjiro-Ping.tanjiro-senpai.repl.co/ping?link=${UrlRepl}`)
         logger.load(global.getText("ping", UrlRepl), '[ FB-TANJIRO ]');
+        var _data = require("./Fb-Tanjiro-Config.json");
+        _data.uptime = false;
+        fs.writeFileSync("./Fb-Tanjiro-Config.json", JSON.stringify(_data, null, 2))
+        return process.exit(1)
     }
     catch {
         logger.err(global.getText("errPing"), '[ FB-TANJIRO ]');
